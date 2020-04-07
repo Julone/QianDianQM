@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>preview</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=3, user-scalable=yes"/>
+    <script>
+        var data =  <%- JSON.stringify(data.data) %>;
+    </script>
+
+</head>
+<body>
+<script src="/js/swiper.min.js"></script>
+<link href="/css/swiper.min.css" rel="stylesheet">
+<script src="/js/handlebars.min.js"></script>
+<div id="root"></div>
+<script type="text/template" id="lunboTemplate">
+    <div class="swiper-container" style="width: {{baseWidth}}px;height:{{baseHeight}}px">
+        <div class="swiper-wrapper">
+            {{#each lunboList}}
+            <div class="swiper-slide" style="width:{{baseWidth}}px">
+                <a href="{{this.url}}">
+                    <img src="{{this.image}}" alt="{{this.alt}}" width="100%"/>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</script>
+<script type="text/template" id="blockTemplate">
+    <figure style="width: 100%;height: {{baseHeight}}px">
+        <img src="{{this.bgUrl.url}}" width="100%" alt="" />
+        <div class="map">
+            {{#each mapList}}
+            <div class="dot" style="left: {{x}}px; top: {{y}}px; width: {{width}}px; height: {{height}}px;"></div>
+            {{/each}}
+        </div>
+    </figure>
+</script>
+<script type="text/template" id="videoTemplate">
+    <figure class="videoModule" onclick="this.classList.add('isPlaying')" style="width: 100%;height: {{baseHeight}}px">
+        <img src="{{videoInfo.videoImage}}" width="100%" alt="" />
+        <video src="{{videoInfo.videoURL}}" height="100%" width="100%" autoplay="{{videoInfo.autoplay}}" controls></video>
+    </figure>
+</script>
+<script src="/js/preview.js"></script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        outline: none;
+    }
+    #root{
+        padding: 0;
+        margin: 0;
+
+    }
+    body{
+        overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 1px;
+    }
+    ::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: #535353;
+    }
+    ::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        background: #EDEDED;
+    }
+    figure{
+        position: relative;
+        margin: 0 auto;
+    }
+    figure img{
+        display: block;
+    }
+    .videoModule img{display: block;}
+    .videoModule video{display: none;}
+    .videoModule::after{
+        content: '>';
+        width: 100px;
+        height: 100px;
+        font-size: 70px;
+        background: transparent;
+        backdrop-filter:saturate(180%) blur(20px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        position: absolute;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        color: white;
+        top:50%;
+        /*border:2px solid red;*/
+    }
+    .videoModule.isPlaying img{display: none;}
+    .videoModule.isPlaying video{display: block;}
+    .videoModule.isPlaying::after{
+        display: none;
+    }
+    /*figure .map{*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    left: 0;*/
+    /*    top: 0;*/
+    /*    position: absolute;*/
+    /*}*/
+    figure .map .dot{
+        /*background: #8103f414;*/
+        position: absolute;
+        background:red;
+    }
+    .swiper-slide a{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+
+    }
+
+</style>
+
+</body>
+</html>
