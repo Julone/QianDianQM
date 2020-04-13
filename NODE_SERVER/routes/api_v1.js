@@ -174,13 +174,13 @@ router.get('/getTemplateData',async ctx => {
 
         ctx.body = {
             code: 200,
-            msg: 'gotten',
+            msg: '模板数据加载成功',
             data: rs.data,
             templateID: rs._id,
         }
     }
     catch(e){
-        ctx.body  = {code:23}
+        ctx.body  = {code:233, msg: '找不到模板'}
     }
 });
 router.get('/getTemplateList',async ctx => {
@@ -260,7 +260,6 @@ router.get('/getShopitemList', async ctx => {
             skip: ((curPage - 1) * limit) / 1,
             projection: ['_id', 'skuId','name','img','price']
         }
-
     });
     s.total = await require('./mongo').db().then(async r=>{
         return await new Promise((res,rej)=>{

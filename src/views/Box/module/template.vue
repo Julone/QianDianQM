@@ -10,16 +10,16 @@
                 <span>标题: {{el.title}}</span>
           <div class="bottom clearfix">
            
-            <router-link :to="'/box/block?templateID=' + el._id">
-              <el-button type="text" class="button">加载模板</el-button>
-            </router-link>
+            <!-- <router-link :to="'/box/block?templateID=' + el._id"> -->
+              <el-button type="text" class="button" @click="loadInfo(el._id)">加载模板</el-button>
+            <!-- </router-link> -->
             <el-button type="text" @click="removeTemplate(el._id)">删除模板</el-button>
              <a :href="'/#/box/block?templateID=' + el._id" target="_blank">
               <el-button type="text" class="button">加载模板(新窗口)</el-button>
             </a>
           </div>
       
-            <time class="time">{{ timeFormat(new Date(el.addTime)) }}</time>
+            <time class="time" @click="$toast.loading('sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf')">{{ timeFormat(new Date(el.addTime)) }}</time>
           </el-main>
         </el-container>
   <!-- <el-card  shadow="hover">
@@ -51,7 +51,7 @@
   </div>
 </template>
 <script>
-import { getTemplateList,removeTemplate } from "./../api";
+import { getTemplateList,removeTemplate,getTemplateData } from "./../api";
 import { timeFormat } from "@/utils/other.js";
 
 export default {
@@ -62,7 +62,26 @@ export default {
   },
   methods: {
     timeFormat,
-    removeTemplate
+    removeTemplate,
+    loadInfo(id){
+      console.log(id);
+      getTemplateData(id).then(r=>{
+            var {
+              code,
+              data,
+              msg
+            } = r.data;
+            if (code == 200) {
+              this.$store.state.imgList = data.imgList;
+              this.$store.state.box = data.box;
+              this.$store.commit("SET_CUR_TEMPLATE_ID", this.templateID);
+               this.$toast.success(msg);
+               this.$router.push({name: 'block', query :{templateID: id} })
+            } else {
+              this.$toast.error(msg);
+            }
+      })
+    }
   },
   mounted() {
     getTemplateList().then(r => {

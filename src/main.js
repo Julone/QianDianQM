@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 // * custom-config
 import '@/assets/global.less'; // global css
 import './utils/directive'; // global vue-directives
+import './components/toast.js';
 //draggable
 import VueDraggableResizable from 'vue-draggable-resizable'
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css'

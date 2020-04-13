@@ -18,6 +18,7 @@ const routes = [{
         },
         {
           path: 'block',
+          name: 'block',
           component: () => import('@/views/Box/module/block.vue'),
           children: [{
             path: 'dialog',
@@ -27,13 +28,7 @@ const routes = [{
         },
         {
           path: 'picture',
-          component: () => ({
-            component: import('@/views/Box/module/picture.vue'),
-            // loading: `<div>loading</div>`,
-            // error: `<div>loading</div>`,
-            // delay: 200,
-            // timeout: 3000
-          })
+          component: () => import('@/views/Box/module/picture.vue'),
         },
         {
           path: 'template',

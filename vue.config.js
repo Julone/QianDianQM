@@ -19,7 +19,7 @@ module.exports = {
         }
     },
     configureWebpack: {
-        plugins: [
+        plugins: isProduction? [
             // Ignore all locale files of moment.js
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             new UglifyJsPlugin({
@@ -39,7 +39,7 @@ module.exports = {
                 threshold: 10240,
                 minRatio: 0.8
             })
-        ],
+        ] : [],
         externals: {
             // 'vue': 'Vue',
             // 'jquery' : '$',
