@@ -12,6 +12,7 @@ function init(){
         });
     });
 }
+//sdfsa
 window.onload = ()=>{
     init();
 }

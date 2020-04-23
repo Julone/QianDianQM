@@ -6,18 +6,27 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const koaBody = require('koa-body');
+const etag = require('koa-etag');
+let staticEtag = require('koa-static-etag')
 // error handler
 onerror(app)
 app.use(require('koa2-cors')());
 app.use(koaBody({multipart:true}));
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+
+app.use(require('koa-static')(__dirname + '/public', {
+  maxAge: 10 * 1000,
+  root: 'static'
+}))
+
+app.use(etag());
 
 app.use(views(__dirname + '/views', {
   extension: 'ejs',
   options: {
-    pretty:true
+    pretty:true,
+  
   }
 }))
 
