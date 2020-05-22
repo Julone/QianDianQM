@@ -1,0 +1,25 @@
+.julone_toast_class{
+    border: 1px solid rgba(96, 98, 102, 0.14); animation:fromBtm .5s 1 forwards;
+    transition:none; background: rgba(255, 255, 255, .98);  
+    backdrop-filter:saturate(180%) blur(20px);
+    box-shadow: 0 10px 40px -10px rgba(0, 36, 100, .5); 
+    border-radius: 100px; padding: 15px 30px;
+    max-width: 300px; min-width: fit-content;
+    @keyframes fromBtm{ from {transform:translate(-50%,60px) scale(0);opacity:0;} to {transform:translate(-50%,0) scale(1);opacity:1;} }
+    .el-message__content{ margin:0 5px;color: #535353;user-select:none;
+        word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height:51px;
+    text-align:justify;
+    max-width:280px;
+    -webkit-line-clamp:3;
+display:-webkit-box;
+-webkit-box-orient:vertical;
+text-overflow:ellipsis;
+overflow:hidden;
+         background: none; pointer-events: none; cursor: default; line-height: 17px; font-size: 14px; }
+    .el-message__icon{margin-right:0px;}
+    .el-message__icon.el-icon-undefined{ display:none }
+    .el-message__closeBtn{ font-size: 13px; }
+    }

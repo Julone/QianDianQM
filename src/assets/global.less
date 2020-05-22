@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+[noScrollX] .el-scrollbar__wrap {
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 5px;
+}
+::-webkit-scrollbar:hover {/*滚动条整体样式*/
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); */
+    background: rgb(221,222,224);
+}
+::-webkit-scrollbar-thumb:hover {/*滚动条里面小方块*/
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); */
+    background: rgb(133, 133, 133);
+}
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    /* -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); */
+    /* border-radius: 10px; */
+    background: transparent;
+    /* background: #EDEDED; */
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isBoxMoving.item {
+    border: 2px solid #ff854b !important;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.isBoxMoving .el-card {
+    border: 1px solid #ff854b !important;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.wh100 {
+    width: 100%;
+    height: 100%;
+}
+
+.v-modal{
+    background: rgba(47, 59, 71, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    opacity: unset;
+}
+.el-dialog{
+    min-width: 700px;
+    border-radius: 10px;;
+    .el-dialog__header{
+        padding: 15px 15px 10px;
+        border-bottom: 1px solid #80808026;
+    }
+    .el-dialog__body{
+        padding: 15px;
+    }
+}
+.el-main, .el-header{
+    padding: 10px;;
+}
+/* .custom-dialog-1{
+
+}
+.custom-dialog-1 .el-dialog__header{
+    padding: 0;
+} */
