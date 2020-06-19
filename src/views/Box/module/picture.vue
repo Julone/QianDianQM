@@ -1,6 +1,6 @@
 <template>
   <div style="width:100%;height:100%">
-    <div ref="sa" jSlot>
+    <div ref="menuExtends" jSlot>
       
       <el-button
         v-if="multipleSelection.length"
@@ -71,10 +71,11 @@
               </el-table-column>
               <el-table-column prop="type" align="center" label="应用范围" width="180">
                 <template slot-scope="scope">
+                  <!-- {{scope.row}} -->
                   <el-select v-model="scope.row.type" size="mini" placeholder="请选择">
                     <el-option
-                      :key="el.value"
-                      v-for="el in typeLabelList.values()"
+                      :key="index"
+                      v-for="(el,index) in typeLabelList"
                       :value="el.value"
                       :label="el.label"
                     >
@@ -138,20 +139,19 @@ export default {
     };
   },
   computed: {
-    ...mapState(["imgList", "typeLabelList"]),
-    // fileList(){
-    //   return this.imgList.map(el => {
-    //     return  {
-    //       url: el.,
-    //       name: el.
-    //     }
-    //   })
-
-    // }
+    ...mapState(["imgList"]),
+    ...mapState({
+      typeLabelList: state => {
+        return [...state.typeLabelList.values()].map(el => {
+          if(el.label == '列表') return;
+          return el;
+        }).filter(Boolean)
+      }
+    })
   },
   component: {},
   mounted() {
-    this.menuBtns = appendNodes("#menuExtend", this.$refs.sa);
+    this.menuBtns = appendNodes("#menuExtend", this.$refs.menuExtends);
   },
   beforeDestroy() {
     this.menuBtns.remove();

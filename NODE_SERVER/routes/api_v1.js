@@ -4,7 +4,7 @@ var path = require('path')
 var imageSize = require('image-size')
 const MongoClient = require('mongodb').MongoClient;
 var {ObjectId} = require('mongodb')
-const url = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+var {mongoURL: url} = require('./config')
 router.get('/', ctx =>  {
     ctx.body ='fsd'
 })
@@ -73,6 +73,8 @@ router.get('/getPreviewData',async ctx => {
         let rs = await new Promise((res,rej) => {
             MongoClient.connect(url, function(err, client) {
                 console.log("Connected successfully to server");
+                console.log(client);
+                if(err) throw new Error(err)
                 var db = client.db('already');
                 db.collection('preview').findOne({_id: ObjectId(insertedID)},{}, (err,rs) =>{
                     rs.data.forEach((el)=>{
@@ -100,6 +102,7 @@ router.get('/getPreviewData',async ctx => {
         }
     }
     catch(e){
+        console.log(e);
         ctx.body  = {code:23}
     }
 });

@@ -5,8 +5,17 @@ import * as storage from './../utils/storage'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    imgList: [ { "url": "/api/upload/2020-3-26/122485-5001ece3aede10ba.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189414550 }, { "url": "/api/upload/2020-3-26/453031-49973d89e01eea1a.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189414831 }, { "url": "/api/upload/2020-3-26/184730-6723c527a02376df.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415098 }, { "url": "/api/upload/2020-3-26/378600-641ad237811404e3.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415322 }, { "url": "/api/upload/2020-3-26/373775-052e37f4231a2177.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415509 }, { "url": "/api/upload/2020-3-26/447036-569cb95951cb9121.jpg", "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415806 }, { "url": "/api/upload/2020-3-26/67641-82997499215a92a6.jpg", "type": "all", "image_type": "jpg", "width": 1000, "height": 350, "remark": "", "create_time": 1585189415986 }, { "url": "/api/upload/2020-3-26/168477-QQ截图20200325154714.png", "type": "all", "image_type": "png", "width": 1242, "height": 368, "remark": "", "create_time": 1585189416192 }, { "url": "/api/upload/2020-3-26/310673-QQ截图20200325154737.png", "type": "all", "image_type": "png", "width": 1257, "height": 881, "remark": "", "create_time": 1585189416365 }, { "url": "/api/upload/2020-3-26/315962-QQ截图20200325154758.png", "type": "all", "image_type": "png", "width": 1250, "height": 452, "remark": "", "create_time": 1585189416542 } ],
-    typeLabelList: new Map([
+    imgList: [ { "url": "https://img14.360buyimg.com/cms/jfs/t1/111883/20/2391/38719/5ea1b0f2Ee27cf3fe/5de52ee5d008e65d.jpg",
+     "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189414550 }, 
+     { "url": "https://img10.360buyimg.com/cms/jfs/t1/100141/24/18178/55217/5e8d4501Ed3c42e03/c0c444b912e7e531.jpg", 
+     "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189414831 }, 
+     { "url": "https://img11.360buyimg.com/cms/jfs/t1/128777/36/2712/80911/5ec8ad6dE27a79bbe/e8f9aba130b7f6f8.jpg",
+      "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415098 }, 
+      { "url": "https://img11.360buyimg.com/cms/jfs/t1/47816/39/11180/155441/5d834bbaEc00cc8a2/16b2f80f833606ed.jpg", 
+      "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415322 },
+       { "url": "https://img13.360buyimg.com/cms/jfs/t1/114278/20/7735/38758/5ec55169Eb0df7963/080c1c1d612727d9.jpg", 
+       "type": "all", "image_type": "jpg", "width": 1920, "height": 600, "remark": "", "create_time": 1585189415509 },],
+     typeLabelList: new Map([
       [
         "block",
         {

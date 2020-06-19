@@ -1,13 +1,11 @@
 const router = require('koa-router')()
 const MongoClient = require('mongodb').MongoClient;
 var {ObjectId} = require('mongodb')
-// Connection URL
-const url = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
-// Create a new MongoClient
+var {mongoURL: url} = require('./config')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
-    title: 'Hello Koa 2!'
+    title: 'Hello Koa 2! This is API website'
   })
 })
 

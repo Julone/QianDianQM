@@ -62,7 +62,19 @@ export default {
   },
   methods: {
     timeFormat,
-    removeTemplate,
+    removeTemplate(_id){
+      console.log(this.templateArray);
+      var index = this.templateArray.findIndex(el => el._id == _id);
+      var prev = this.templateArray.splice(index,1);
+      removeTemplate(_id).then(r=>{
+        if(r.data.code == 200) {  
+          this.$toast.success('模板删除成功');
+        }else{
+          this.templateArray.splice(index,0 ,...prev)
+          this.$toast.error('模板删除失败');
+        }
+      })
+    },
     loadInfo(id){
       console.log(id);
       getTemplateData(id).then(r=>{
@@ -81,16 +93,19 @@ export default {
               this.$toast.error(msg);
             }
       })
+    },
+    pullTemplateData(){
+      return getTemplateList().then(r => {
+        if (r.data.code == 200) {
+          this.templateArray = r.data.data;
+        }else{
+          this.$toast.error('模板获取失败')
+        }
+    });
     }
   },
   mounted() {
-    getTemplateList().then(r => {
-      if (r.data.code == 200) {
-        this.templateArray = r.data.data;
-      }
-    });
-
-    // console.log(margin);
+    this.pullTemplateData();
   }
 };
 </script>

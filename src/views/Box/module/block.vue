@@ -10,7 +10,7 @@
         <!-- 预览ID: {{insertedID}}
         <hr>-->
         <el-row justify="center" type="flex">
-          <iframe :src="'http://192.168.36.119:3000/preview?insertedID=' + insertedID" frameborder="0"></iframe>
+          <iframe :src="'/api/preview?insertedID=' + insertedID" frameborder="0"></iframe>
         </el-row>
 
         <!-- <el-divider></el-divider> -->
@@ -18,13 +18,13 @@
         <el-row>
           <el-col :span="12" align="center">
             二维码预览
-            <qrcode :value="'http://192.168.36.119:3000/preview?insertedID=' + insertedID"></qrcode>
+            <qrcode :value="'/api/preview?insertedID=' + insertedID"></qrcode>
           </el-col>
 
           <el-col :span="12" align="center">
             网址预览
             <br />
-            <a target="_blank" :href="'http://192.168.36.119:3000/preview?insertedID=' + insertedID">
+            <a target="_blank" :href="'/api/preview?insertedID=' + insertedID">
               <el-button>网址预览</el-button>
             </a>
             <br />
@@ -50,7 +50,7 @@
               <small>隐藏背景</small>
             </div>
 
-            <div class="leftpanelControlBtn flex-center" @click="TOGGLE_BOX_IMAGE(imgToggle = !imgToggle)">
+            <div class="leftpanelControlBtn flex-center" >
               <baseWidthSelector v-slot="scope">
                 <div class="flex-center" style="flex-direction:column">
                   <i class="el-icon-view"></i>

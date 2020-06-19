@@ -1,8 +1,8 @@
 <template>
 <div class="wh100">
-      <transition name="fadeApp">
+  <transition name="fadeApp">
     <router-view></router-view>
-      </transition>
+  </transition>
 </div>
 </template>
 <style>

@@ -20,6 +20,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+*{
+  border: 1px solid red;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,13 +30,16 @@ export default {
   color: #2c3e50;
   display:flex;
   width:100%;
-  height:100vh;
   overflow:hidden;
+  height: 100%;
+  // border: 1px solid red;
+  box-sizing: border-box;
+  min-width: 960px;
   div.app-container.left{
-    width: 15%;
+    // width: 15%;
     overflow-x:hidden;
     // border-right: 1px solid gray;
-    width: 0 !important;
+    // width: 0 !important;
    // @media screen and (max-width: 800px){
     //   width: 0;
     // }

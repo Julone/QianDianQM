@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 var {ObjectId} = require('mongodb');
-const url = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+// const url = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+var {mongoURL: url} = require('./config')
 module.exports = {
     async db(){
         return await new Promise((res,rej) => {
